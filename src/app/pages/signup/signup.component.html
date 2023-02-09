@@ -1,0 +1,42 @@
+<div class="box">
+  <div class="container">
+    <img src="../../../assets/av-logo.svg" alt="logo" />
+    <div class="text-display">
+      <p>Register using email and password</p>
+    </div>
+    <div class="input-element">
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+        [(ngModel)]="enteredEmail"
+      />
+    </div>
+    <div class="input-element">
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+        [(ngModel)]="enteredPassword"
+      />
+    </div>
+    <div class="input-element">
+      <input
+        type="confirm-password"
+        name="confirm-password"
+        id="confirm-password"
+        placeholder="Confirm Password"
+      />
+    </div>
+    <div class="input-element">
+      <button type="submit-signup" (click)="onSave()" routerLink="/login">
+        SIGN UP
+      </button>
+    </div>
+    <div class="text-display">
+      <h4>Aready have an account? <a href="/login">Login</a></h4>
+    </div>
+  </div>
+</div>

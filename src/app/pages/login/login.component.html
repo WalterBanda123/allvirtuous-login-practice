@@ -1,0 +1,38 @@
+<div class="box">
+  <div class="container">
+    <img src="../../../assets/av-logo.svg" alt="logo" />
+    <div class="text-display">
+      <p>Please enter your email and password to login</p>
+    </div>
+    <div class="input-element">
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+        [(ngModel)]="user!.email"
+      />
+    </div>
+    <div class="input-element">
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+        [(ngModel)]="user!.password"
+      />
+    </div>
+    <div class="input-element">
+      <button
+        type="submit"
+        (click)="logInUser()"
+        routerLink="/dashboard/{{ user?.id }}"
+      >
+        LOGIN
+      </button>
+    </div>
+    <div class="text-display">
+      <h4>Forgot Password?</h4>
+    </div>
+  </div>
+</div>
