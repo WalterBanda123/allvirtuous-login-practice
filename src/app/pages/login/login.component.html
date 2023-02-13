@@ -7,6 +7,7 @@
     <div class="input-element">
       <input
         type="email"
+        required
         name="email"
         id="email"
         placeholder="Email"
@@ -15,8 +16,10 @@
     </div>
     <div class="input-element">
       <input
+        minlength="4"
         type="password"
         name="password"
+        required
         id="password"
         placeholder="Password"
         [(ngModel)]="user.password"

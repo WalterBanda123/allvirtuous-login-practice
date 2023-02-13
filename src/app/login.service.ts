@@ -12,9 +12,10 @@ export class LoginService {
     return users;
   }
 
-  signupUser(email: string, password: string):void {
+  signupUser(email: string, password: string, name:string):void {
     const newUser: User = {
       id: Math.random(),
+      name:name,
       email: email,
       password: password,
     };

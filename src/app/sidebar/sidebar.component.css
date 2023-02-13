@@ -1,0 +1,37 @@
+nav {
+  height: 100vw;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+li {
+  position: relative;
+  font-size: large;
+  padding-left: 30px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  justify-content: center;
+  text-align: justify;
+  display: table;
+  width: 100%;
+}
+img{
+  height: 25;
+  width: 80%;
+  margin-top: 10px;
+  padding: 25px;
+}
+
+li:hover{
+  background-color: lightblue;
+  color: white;
+}
+span{
+  text-align: center;
+  color: black;
+  width: 100%;
+}

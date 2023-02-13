@@ -1,25 +1,28 @@
-import { User } from "./user";
+import { User } from './user';
 
-export const USERS:User[]=[
-
+export const USERS: User[] = [
   {
-    id:1,
-    email:"p@gmail.com",
-    password:"ppp"
+    id: 1,
+    name: 'Panashe',
+    email: 'p@gmail.com',
+    password: 'ppp',
   },
   {
-    id:2,
-    email:"d@gmail.com",
-    password:"ddd"
+    id: 2,
+    name: 'Denis',
+    email: 'd@gmail.com',
+    password: 'ddd',
   },
   {
-    id:3,
-    email:"c@gmail.com",
-    password:"ccc"
+    id: 3,
+    name: 'Cathy',
+    email: 'c@gmail.com',
+    password: 'ccc',
   },
   {
-    id:4,
-    email:"e@gmail.com",
-    password:"eee"
+    id: 4,
+    name: 'Ellen',
+    email: 'e@gmail.com',
+    password: 'eee',
   },
-]
+];

@@ -4,33 +4,54 @@
     <div class="text-display">
       <p>Register using email and password</p>
     </div>
-    <div class="input-element">
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Email"
-        [(ngModel)]="enteredEmail"
-      />
-    </div>
-    <div class="input-element">
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Password"
-        [(ngModel)]="enteredPassword"
-      />
-    </div>
-    <div class="input-element">
-      <input
-        type="confirm-password"
-        name="confirm-password"
-        id="confirm-password"
-        placeholder="Confirm Password"
-        [(ngModel)]="confirmedPassword"
-      />
-    </div>
+    <form name="myForm">
+      <div class="input-element">
+        <input
+          class="ng-valid ng ng-untouched"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="User name"
+          [(ngModel)]="enteredUserName"
+        />
+      </div>
+      <div class="input-element">
+        <input
+          class="ng-valid ng ng-untouched"
+          type="email"
+          required
+          name="email"
+          id="email"
+          ngModel="email"
+          placeholder="Email"
+          [(ngModel)]="enteredEmail"
+        />
+        <div
+     class="alert alert-danger"> </div>
+      </div>
+      <div class="input-element">
+        <input
+          required
+          minlength="4"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          [(ngModel)]="enteredPassword"
+        />
+      </div>
+      <div class="input-element">
+        <input
+          required
+          minlength="4"
+          type="password"
+          name="confirm-password"
+          id="confirm-password"
+          placeholder="Confirm Password"
+          [(ngModel)]="confirmedPassword"
+        />
+      </div>
+    </form>
     <div class="input-element">
       <p *ngIf="errorMessage" class="error">
         {{ errorMessage }}

@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService, private router: Router) {
     this.user = {
       id: -1,
+      name:'',
       email: '',
       password: '',
     };
@@ -22,13 +23,21 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     const user = this.loginService.onLogin(this.user.email, this.user.password);
 
-    if (this.user?.email.length && this.user?.password.length > 0) {
+    if (user) {
       this.router.navigate(['dashboard', user?.id]);
-    }
-    if (this.user.email.length <= 0 || this.user!.password.length <= 0 ) {
+    } else {
       this.errorMessage = "User doesn't exist";
       return;
     }
+
+
+    /*if (this.user?.email.length && this.user?.password.length > 0) {
+      this.router.navigate(['dashboard', user?.id]);
+    }
+    if (this.user.email.length <= 0 || this.user!.password.length <= 0) {
+      this.errorMessage = "User doesn't exist";
+      return;
+    } */
   }
 
   ngOnInit(): void {}
