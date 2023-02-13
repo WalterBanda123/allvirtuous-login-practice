@@ -10,7 +10,7 @@
         name="email"
         id="email"
         placeholder="Email"
-        [(ngModel)]="user!.email"
+        [(ngModel)]="user.email"
       />
     </div>
     <div class="input-element">
@@ -19,17 +19,19 @@
         name="password"
         id="password"
         placeholder="Password"
-        [(ngModel)]="user!.password"
+        [(ngModel)]="user.password"
       />
     </div>
     <div class="input-element">
-      <button
-        type="submit"
-        (click)="logInUser()"
-        routerLink="/dashboard/{{ user?.id }}"
-      >
-        LOGIN
-      </button>
+      <p *ngIf="errorMessage" class="error">
+        {{ errorMessage }}. <a class="link" routerLink="/signup">SignUp</a>
+      </p>
+    </div>
+
+    <div class="input-element">
+      <a (click)="onLogin()">
+        <button type="submit">LOGIN</button>
+      </a>
     </div>
     <div class="text-display">
       <h4>Forgot Password?</h4>

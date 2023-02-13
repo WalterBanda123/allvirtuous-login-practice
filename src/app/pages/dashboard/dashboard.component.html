@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="user" >
   <nav>
     <span>
       <img
@@ -41,7 +41,7 @@
       </span>
     </div>
     <div class="main-container">
-      <h2>Hello {{user?.email}}</h2>
+      <h2>Hello {{user!.email}}</h2>
     </div>
   </section>
 </div>

@@ -6,39 +6,32 @@ import { USERS } from './users';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService implements OnInit {
-  users = USERS;
-  userLogin: any;
-
+export class LoginService {
   getUsers(): Observable<User[]> {
-    const userslist = of(this.users);
-    console.log('users list', userslist);
-    return userslist;
+    const users = of(USERS);
+    return users;
   }
 
-  loginUser(email: string, password: string) {
-    this.userLogin = this.users?.find(
-      (u) => u.password === password && u.email === email
-    );
-    
-  }
-  signUpUser(email: string, password: string) {
+  signupUser(email: string, password: string):void {
     const newUser: User = {
-      id: Math.random().toFixed(3),
+      id: Math.random(),
       email: email,
       password: password,
     };
 
-    this.users.push(newUser);
-    console.log(newUser, this.users);
+    USERS.push(newUser);
   }
 
-  getUser(id: string): Observable<User> {
-    const user = this.users.find((user) => user.id === id)!;
+  onLogin(email: string, password: string) {
+    const user = USERS.find(
+      (u) => u.email === email && u.password === password
+    );
+    return user;
+  }
+  getUser(id: number): Observable<User> {
+    const user = USERS.find((u) => u.id === id)!;
     return of(user);
   }
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

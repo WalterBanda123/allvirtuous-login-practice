@@ -7,6 +7,14 @@
   align-self: center;
 }
 
+.error{
+  text-align: center;
+  color: tomato;
+  display: flex;
+  flex-direction: row;
+  padding-left: 40PX;
+}
+
 .box {
   text-align: center;
   width: 500px;

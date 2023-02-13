@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/login.service';
 import { User } from 'src/app/user';
-import { USERS } from 'src/app/users';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,35 +9,27 @@ import { USERS } from 'src/app/users';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  user?: User = { id: '', email: '', password: '' };
-  userLogin?: User | undefined;
-  users: User[] = USERS;
+  constructor(private loginService: LoginService, private router: Router) {
+    this.user = {
+      id: -1,
+      email: '',
+      password: '',
+    };
+  }
+  user: User;
+  errorMessage?: string;
 
-  constructor(private LoginService: LoginService) {}
+  onLogin(): void {
+    const user = this.loginService.onLogin(this.user.email, this.user.password);
 
-  ngOnInit(): void {
-    this.LoginService.getUsers().subscribe(
-      (userslist) => this.users === userslist
-    );
-
-    this.logInUser()
+    if (this.user?.email.length && this.user?.password.length > 0) {
+      this.router.navigate(['dashboard', user?.id]);
+    }
+    if (this.user.email.length <= 0 || this.user!.password.length <= 0 ) {
+      this.errorMessage = "User doesn't exist";
+      return;
+    }
   }
 
-  logInUser() {
-    this.LoginService.loginUser(this.user!.email, this.user!.password);
-  }
-
-  /* loginUser() {
-    this.userLogin = this.users?.find(
-      (u) => u.password === this.user?.password && u.email === this.user?.email
-
-    );
-
-    console.log(" kkkkkk---",this.userLogin)
-
-    console.log(this.user?.email, this.user?.password)
-
-
-   // console.log(this.LoginService.getUser(this.userLogin!.id))
-  } */
+  ngOnInit(): void {}
 }

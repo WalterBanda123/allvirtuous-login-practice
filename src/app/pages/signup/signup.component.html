@@ -28,12 +28,16 @@
         name="confirm-password"
         id="confirm-password"
         placeholder="Confirm Password"
+        [(ngModel)]="confirmedPassword"
       />
     </div>
     <div class="input-element">
-      <button type="submit-signup" (click)="onSave()" routerLink="/login">
-        SIGN UP
-      </button>
+      <p *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </p>
+    </div>
+    <div class="input-element">
+      <button type="submit-signup" (click)="signUpHandler()">SIGN UP</button>
     </div>
     <div class="text-display">
       <h4>Aready have an account? <a href="/login">Login</a></h4>
