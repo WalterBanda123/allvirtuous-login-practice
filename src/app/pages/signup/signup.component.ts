@@ -26,18 +26,25 @@ export class SignupComponent implements OnInit {
     (this.enteredEmail = ''),
       (this.enteredPassword = ''),
       (this.enteredUserName = '');
+      this.loginVariable = {}
   }
   errorMessage?: string;
 
   ngOnInit() {
-    this.signUpHandler();
+    this.signUpHandler(this.loginVariable);
   }
 
   users?: User[];
 
+  loginVariable: any;
 
-  submitHandler(login:any){
-    console.log("submitted", login)
+  submitHandler(login: any) {
+    this.loginVariable = login;
+
+    if (this.loginVariable.invalid === true) {
+
+      return;
+    }
   }
 
   onSuccess() {
@@ -46,17 +53,22 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  signUpHandler(): void {
+  signUpHandler(login:any): void {
     //if (this.enteredEmail.length != 0 && this.enteredPassword.length != 0) {
-      if (this.enteredPassword === this.confirmedPassword) {
-        this.SignupService.signupUser(
-          this.enteredEmail,
-          this.enteredPassword,
-          this.enteredUserName
-        );
-        this.onSuccess();
-        this.router.navigate(['login']);
-      }
+    if (this.enteredPassword === this.confirmedPassword) {
+      this.SignupService.signupUser(
+        this.enteredEmail,
+        this.enteredPassword,
+        this.enteredUserName
+      );
+      this.onSuccess();
+      if (login.invalid === true) {
+        console.log("submission failed")
 
+      } else {
+        this.router.navigate(['login']);
+        console.log("sumission successful")
+      }
+    }
   }
 }
