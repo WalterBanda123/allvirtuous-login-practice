@@ -26,7 +26,7 @@
       <input
         #password="ngModel"
         ngModel
-        minlength="4"
+        minlength="3"
         type="password"
         name="password"
         required
@@ -34,10 +34,17 @@
         placeholder="Password"
         [(ngModel)]="user.password"
       />
+      <div
+          class="alert alert-danger"
+          *ngIf="password.touched && password.invalid"
+        >
+          <p *ngIf="password.hasError('required')">Password is required</p>
+          <p *ngIf="password.hasError('minlength')">Password is too short</p>
+        </div>
     </div>
-    <div class="input-element">
-      <p *ngIf="errorMessage" class="error">
-        {{ errorMessage }}. <a class="link" routerLink="/signup">SignUp</a>
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      <p>
+        {{ errorMessage }}. <a class="link" routerLink="/signup"></a>
       </p>
     </div>
 

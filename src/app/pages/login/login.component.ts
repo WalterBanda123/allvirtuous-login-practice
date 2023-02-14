@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     if (user) {
       this.router.navigate(['dashboard', user?.id]);
     } else {
-      this.errorMessage = "User doesn't exist";
+      this.errorMessage = "Invalid user name or password";
       return;
     }
 
