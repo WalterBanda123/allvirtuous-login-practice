@@ -35,6 +35,11 @@ export class SignupComponent implements OnInit {
 
   users?: User[];
 
+
+  submitHandler(login:any){
+    console.log("submitted", login)
+  }
+
   onSuccess() {
     this.toastr.success('You have successfully register.', 'Registration', {
       timeOut: 3000,
@@ -42,15 +47,7 @@ export class SignupComponent implements OnInit {
   }
 
   signUpHandler(): void {
-    if (
-      this.enteredEmail === '' ||
-      this.enteredUserName === '' ||
-      this.enteredPassword === ''
-    ) {
-      this.errorMessage = 'please fill all the fields provided';
-      return;
-    }
-    if (this.enteredEmail.length != 0 && this.enteredPassword.length != 0) {
+    //if (this.enteredEmail.length != 0 && this.enteredPassword.length != 0) {
       if (this.enteredPassword === this.confirmedPassword) {
         this.SignupService.signupUser(
           this.enteredEmail,
@@ -59,10 +56,7 @@ export class SignupComponent implements OnInit {
         );
         this.onSuccess();
         this.router.navigate(['login']);
-      } else {
-        this.errorMessage = 'Passwords do not match. Retry.';
-        return;
       }
-    }
+
   }
 }

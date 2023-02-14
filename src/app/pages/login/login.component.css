@@ -1,3 +1,23 @@
+
+
+.alert {
+  background-color: red;
+  opacity: 0.6;
+  position: relative;
+  height: 35px;
+  justify-self: center;
+  margin-left: 15px;
+  width: 90%;
+  text-align: center;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 10px;
+}
+.alert-danger p {
+  color: whitesmoke;
+  text-align: left;
+  margin-bottom: 10px;
+}
 .container {
   background-color: white;
   width: 350px;

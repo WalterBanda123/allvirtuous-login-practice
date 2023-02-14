@@ -4,9 +4,13 @@
     <div class="text-display">
       <p>Register using email and password</p>
     </div>
-    <form name="myForm">
+    <form #login="ngForm" (ngSubmit)="submitHandler(login)">
       <div class="input-element">
         <input
+          #username="ngModel"
+          required
+          minlength="3"
+          ngModel
           class="ng-valid ng ng-untouched"
           type="text"
           name="name"
@@ -14,10 +18,22 @@
           placeholder="User name"
           [(ngModel)]="enteredUserName"
         />
+        <div
+          class="alert alert-danger"
+          *ngIf="username.touched && username.invalid"
+        >
+          <p *ngIf="username.hasError('required')">Username is required</p>
+          <p *ngIf="username.hasError('minlength')">
+            Username should be minimum of 4 characters
+          </p>
+        </div>
       </div>
+      <pre></pre>
       <div class="input-element">
         <input
-          class="ng-valid ng ng-untouched"
+          pattern=".+@gmail\.com"
+          #email="ngModel"
+          ngModel
           type="email"
           required
           name="email"
@@ -26,11 +42,15 @@
           placeholder="Email"
           [(ngModel)]="enteredEmail"
         />
-        <div
-     class="alert alert-danger"> </div>
+        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+          <p *ngIf="email.hasError('required')">Email address is required</p>
+          <p *ngIf="email.hasError('pattern')">Not a valid email address</p>
+        </div>
       </div>
       <div class="input-element">
         <input
+          #password="ngModel"
+          ngModel
           required
           minlength="4"
           type="password"
@@ -39,9 +59,18 @@
           placeholder="Password"
           [(ngModel)]="enteredPassword"
         />
+        <div
+          class="alert alert-danger"
+          *ngIf="password.touched && password.invalid"
+        >
+          <p *ngIf="password.hasError('required')">Password is required</p>
+          <p *ngIf="password.hasError('minlength')">Password is too short</p>
+        </div>
       </div>
       <div class="input-element">
         <input
+          #confirm_password="ngModel"
+          ngModel
           required
           minlength="4"
           type="password"
@@ -50,16 +79,27 @@
           placeholder="Confirm Password"
           [(ngModel)]="confirmedPassword"
         />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            confirm_password.touched &&
+            confirm_password.invalid &&
+            password.touched
+          "
+        >
+          <p *ngIf="confirm_password.value != password.value">
+            Password do not match
+          </p>
+          <p *ngIf="confirm_password.hasError('required')">Password required</p>
+        </div>
+      </div>
+      <div class="alert alert-danger" *ngIf="login.errors">
+        Please fill all the fields before submitting form.
+      </div>
+      <div class="input-element">
+        <button type="submit" (click)="signUpHandler()">SIGN UP</button>
       </div>
     </form>
-    <div class="input-element">
-      <p *ngIf="errorMessage" class="error">
-        {{ errorMessage }}
-      </p>
-    </div>
-    <div class="input-element">
-      <button type="submit-signup" (click)="signUpHandler()">SIGN UP</button>
-    </div>
     <div class="text-display">
       <h4>Aready have an account? <a href="/login">Login</a></h4>
     </div>

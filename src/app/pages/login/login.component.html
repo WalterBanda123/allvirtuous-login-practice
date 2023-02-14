@@ -6,6 +6,9 @@
     </div>
     <div class="input-element">
       <input
+        pattern=".+@gmail\.com"
+        #email="ngModel"
+        ngModel
         type="email"
         required
         name="email"
@@ -13,9 +16,16 @@
         placeholder="Email"
         [(ngModel)]="user.email"
       />
+      <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+        <!-- <p *ngIf="errorMessage">Wrong email or password</p> -->
+        <p *ngIf="email.hasError('required')">Email address is required</p>
+        <p *ngIf="email.hasError('pattern')">Not a valid email address</p>
+      </div>
     </div>
     <div class="input-element">
       <input
+        #password="ngModel"
+        ngModel
         minlength="4"
         type="password"
         name="password"
